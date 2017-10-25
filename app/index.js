@@ -4,7 +4,12 @@ import Home from "./screens/Home";
 
 EStyleSheet.build({
   $primaryBlue: "#4F6D7A",
-  $white: "#FFF"
+  $white: "#FFFFFF",
+  $border: "#E2E2E2",
+  $inputText: "#797979",
+  $lightGray: "#F0F0F0"
+  // Outline mostra quadrados ao redor dos componentes
+  // outline: 1
 });
 
 export default () => <Home />;
