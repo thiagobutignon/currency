@@ -41,7 +41,7 @@ class Home extends Component {
       <Container>
         <StatusBar backgroundColor="blue" barStyle="light-content" />
         <Header onPress={this.handleOptionsPress} />
-        <KeyboardAvoidingView behavior="padding">
+        <KeyboardAvoidingView>
           <Logo />
           <InputWithButton
             buttonText={TEMP_BASE_CURRENCY}
