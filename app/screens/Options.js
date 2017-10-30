@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { ScrollView, StatusBar, Platform } from "react-native";
+import { ScrollView, StatusBar, Platform, Linking } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ListItem, Separator } from "../components/List";
-
+import PropTypes from "prop-types";
+import { WebBrowser } from "expo";
 // o icon_prefix o prefixo de acordo com a plataforma.
 // Essa logica está escrita da seguinte maneira:
 // variavel icon_prefix é igual a plataform.os(seleciona plataforma)
@@ -13,12 +14,21 @@ const ICON_COLOR = "#868686";
 const ICON_SIZE = 23;
 
 class Options extends Component {
+  static PropTypes = {
+    navigation: PropTypes.object
+  };
   handleThemePress = () => {
-    console.log("voce clickou no tema");
+    this.props.navigation.navigate("Themes");
   };
 
   handleSitePress = () => {
-    console.log("voce clickou no site");
+    WebBrowser.openBrowserAsync("http://fixer.io/").catch(() =>
+      alert("A url está com um erro")
+    );
+  };
+
+  handleLinkedin = () => {
+    WebBrowser.openBrowserAsync("https://www.linkedin.com/in/thiagobutignon");
   };
   render() {
     return (
@@ -37,7 +47,7 @@ class Options extends Component {
         />
         <Separator />
         <ListItem
-          text="Site"
+          text="Fixer.io"
           onPress={this.handleSitePress}
           customIcon={
             <Ionicons

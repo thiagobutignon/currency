@@ -7,6 +7,7 @@ import { Logo } from "../components/Logo";
 import { InputWithButton } from "../components/TextInput";
 import { ClearButton } from "../components/Button";
 import { LastConverted } from "../components/Text";
+import PropTypes from "prop-types";
 
 const TEMP_BASE_CURRENCY = "USD";
 const TEMP_QUOTE_CURRENCY = "GBP";
@@ -16,16 +17,20 @@ const TEMP_CONVERSION_RATE = Number(TEMP_BASE_PRICE) / Number(TEMP_QUOTE_PRICE);
 const TEMP_CONVERSION_DATE = new Date();
 
 class Home extends Component {
+  static propTypes = {
+    navigation: PropTypes.object
+  };
+
   handleChangeText = () => {
     console.log("change text");
   };
 
   handlePressBaseCurrency = () => {
-    console.log("press base currency");
+    this.props.navigation.navigate("CurrencyList", { title: "Base Currency" });
   };
 
   handlePressQuoteCurrency = () => {
-    console.log("press quote currency");
+    this.props.navigation.navigate("CurrencyList", { title: "Quote Currency" });
   };
 
   handleSwapCurrency = () => {
@@ -33,7 +38,7 @@ class Home extends Component {
   };
 
   handleOptionsPress = () => {
-    console.log("voce apertou a funcao do header");
+    this.props.navigation.navigate("Options");
   };
 
   render() {
